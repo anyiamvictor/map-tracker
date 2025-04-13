@@ -1,8 +1,18 @@
-import React from 'react'
-
-function CityList() {
+import CityItem from './CityItem';
+import styles from './CityList.module.css';
+import Spinner from './Spinner';
+function CityList({ cities, isLoading }) {
+  if (isLoading) {
+    return <Spinner/>
+  }
   return (
-    <div>CityList</div>
+    <ul className={styles.cityList}>
+      {cities.map((city) => (
+        <li key={city.id}>
+         <CityItem city={city} />
+        </li>
+      ))}
+    </ul>
   )
 }
 
